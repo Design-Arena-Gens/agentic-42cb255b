@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Minimal, modern, scalable SVG logo with live preview and downloads." />
+    <meta name="theme-color" content="#0ea5e9" />
+    <title>Agentic Logo</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="preload" href="/assets/logo.svg" as="image" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <img src="/assets/logo.svg" width="40" height="40" alt="Logo" />
+        <span>Agentic</span>
+      </div>
+      <nav class="actions">
+        <button id="toggleTheme" class="button subtle" aria-label="Toggle background">Toggle BG</button>
+        <a class="button primary" id="downloadSvg" href="/assets/logo.svg" download="agentic-logo.svg">Download SVG</a>
+        <button class="button" id="downloadPng">Download PNG</button>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="logo-frame checker">
+          <img id="logoImg" src="/assets/logo.svg" alt="Agentic Logo" />
+        </div>
+        <div class="controls">
+          <label class="control">
+            <span>Primary</span>
+            <input type="color" id="colorPrimary" value="#0ea5e9" />
+          </label>
+          <label class="control">
+            <span>Accent</span>
+            <input type="color" id="colorAccent" value="#22d3ee" />
+          </label>
+          <label class="control">
+            <span>Dark</span>
+            <input type="color" id="colorDark" value="#0b1220" />
+          </label>
+          <label class="control">
+            <span>Light</span>
+            <input type="color" id="colorLight" value="#e6f6ff" />
+          </label>
+          <button class="button" id="resetColors">Reset</button>
+        </div>
+      </section>
+
+      <section class="variants">
+        <h2>Variants</h2>
+        <div class="grid">
+          <div class="variant card">
+            <div class="logo-frame solid light">
+              <img src="/assets/logo.svg" alt="Logo light" />
+            </div>
+            <span>Light</span>
+          </div>
+          <div class="variant card">
+            <div class="logo-frame solid dark">
+              <img src="/assets/logo.svg" alt="Logo dark" />
+            </div>
+            <span>Dark</span>
+          </div>
+          <div class="variant card">
+            <div class="logo-frame solid primary">
+              <img src="/assets/logo.svg" alt="Logo primary" />
+            </div>
+            <span>Primary</span>
+          </div>
+          <div class="variant card">
+            <div class="logo-frame solid accent">
+              <img src="/assets/logo.svg" alt="Logo accent" />
+            </div>
+            <span>Accent</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>? <span id="year"></span> Agentic Logo</span>
+      <a href="https://vercel.com" target="_blank" rel="noopener">Hosted on Vercel</a>
+    </footer>
+
+    <script src="/assets/script.js" defer></script>
+  </body>
+  </html>
+

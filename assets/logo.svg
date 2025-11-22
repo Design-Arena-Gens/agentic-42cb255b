@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <!-- Accept hex values via URL params: ?p=, ?a=, ?d=, ?l= -->
+    <style>
+      :root {
+        --p: #0ea5e9; /* primary */
+        --a: #22d3ee; /* accent */
+        --d: #0b1220; /* dark */
+        --l: #e6f6ff; /* light */
+      }
+    </style>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--p)" />
+      <stop offset="1" stop-color="var(--a)" />
+    </linearGradient>
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-opacity="0.15" flood-color="#001428" />
+    </filter>
+    <clipPath id="rounded">
+      <rect x="16" y="16" width="224" height="224" rx="48" ry="48" />
+    </clipPath>
+  </defs>
+
+  <!-- Background with subtle grid -->
+  <g clip-path="url(#rounded)">
+    <rect x="16" y="16" width="224" height="224" fill="white"/>
+    <g opacity="0.18">
+      <path d="M16 56h224 M16 96h224 M16 136h224 M16 176h224 M16 216h224" stroke="var(--l)" stroke-width="1"/>
+      <path d="M56 16v224 M96 16v224 M136 16v224 M176 16v224 M216 16v224" stroke="var(--l)" stroke-width="1"/>
+    </g>
+    <rect x="16" y="16" width="224" height="224" fill="url(#g)" opacity="0.08"/>
+  </g>
+
+  <!-- Monogram 'A' constructed from geometric arcs -->
+  <g filter="url(#softShadow)">
+    <path d="
+      M128 44
+      a84 84 0 1 1 0 168
+      a84 84 0 1 1 0 -168
+      M128 92
+      a36 36 0 1 0 0 72
+      a36 36 0 1 0 0 -72
+    " fill="none" stroke="url(#g)" stroke-width="24" stroke-linecap="round"/>
+    <!-- Crossbar -->
+    <path d="M88 128 H168" stroke="var(--d)" stroke-opacity="0.14" stroke-width="16" stroke-linecap="round"/>
+    <!-- Upward chevron -->
+    <path d="M96 144 L128 96 L160 144" fill="none" stroke="white" stroke-width="10" stroke-linecap="round"/>
+    <path d="M96 144 L128 96 L160 144" fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Outer rounded frame -->
+  <rect x="16" y="16" width="224" height="224" rx="48" ry="48" fill="none" stroke="var(--d)" stroke-opacity="0.08" stroke-width="2"/>
+
+  <!-- Color overrides via CSS variables from query params -->
+  <script type="application/ecmascript"><![CDATA[
+    (function () {
+      try {
+        var q = (typeof location !== 'undefined') ? location.search : '';
+        if (!q) return;
+        var params = {};
+        q.substring(1).split('&').forEach(function (kv) {
+          var sp = kv.split('=');
+          if (sp.length === 2) params[decodeURIComponent(sp[0])] = decodeURIComponent(sp[1]);
+        });
+        var rootStyle = document.querySelector('style');
+        var p = params.p ? '#' + params.p : null;
+        var a = params.a ? '#' + params.a : null;
+        var d = params.d ? '#' + params.d : null;
+        var l = params.l ? '#' + params.l : null;
+        var css = ':root{'
+          + '--p:' + (p || '#0ea5e9') + ';'
+          + '--a:' + (a || '#22d3ee') + ';'
+          + '--d:' + (d || '#0b1220') + ';'
+          + '--l:' + (l || '#e6f6ff') + ';}';
+        if (rootStyle) rootStyle.textContent = css;
+      } catch (e) {}
+    })();
+  ]]></script>
+</svg>
+
